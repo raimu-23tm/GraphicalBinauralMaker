@@ -4,32 +4,34 @@ import Foundation
 
 class ViewController: UIViewController, UITabBarDelegate {
     
+    //ソルフェジオ周波数リスト
+    let frequeList =
+    [528,174,285,396,417,639,741,852,4096]
+    
+    //コントローラー定義
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var maintab: UITabBar!
     @IBOutlet weak var contents: UIView!
     @IBOutlet weak var frequencyLabel: UILabel!
-        
-    var mainContentView: ViewController?
+    @IBOutlet weak var plusLabel: UILabel!
+    @IBOutlet weak var binoralLabel: UILabel!
+    @IBOutlet weak var playBackButton: UIButton!
+    @IBOutlet weak var slider1_1: UISlider!
+    @IBOutlet weak var slider1_2: UISlider!
     
+    //タブ遷移に使用
+    var mainContentView: ViewController?
     var pageViewController: UIPageViewController?
     
-    var currentFrequency = 0
-    var playFlg = true
-    var running = true
-    
-    //■サウンド関係
-    let audioEngine = AVAudioEngine()
-    let player = AVAudioPlayerNode()
-    var audioFormat = AVAudioFormat()
-    var fs = 0.0
-    var length = 0.0
-    let soundspan = 3.0
-
     // 音データ
-    var buffer = AVAudioPCMBuffer()
+    var soundwave: SoundWave!
     
-    var f0: Float = 0.0 // 周波数
     
+    var currentFrequency = 528
+    var soundVolume = 0.5
+    var playFlg = false
+
+    //初期処理
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,192 +58,188 @@ class ViewController: UIViewController, UITabBarDelegate {
                 }
             }
             
-            //初期ページ設定
-            let contentVC = storyboard?.instantiateViewController(withIdentifier: "contents1") as! ViewController
-            contentVC.frequencyLabel = self.frequencyLabel
-            self.pageViewController?.setViewControllers([contentVC], direction: .forward, animated: true,completion: nil)
-      
             //初期設定
             frequencyLabel.text = String(currentFrequency) + " Hz"
+            plusLabel.isHidden = true
+            binoralLabel.text = "0.0" + " Hz"
+            binoralLabel.isHidden = true
             
             //サウンド初期設定
-            audioFormat = player.outputFormat(forBus: 0)
-            fs = audioFormat.sampleRate // 標本化周波数: 44.1K Hz
-            length = audioFormat.sampleRate * soundspan // 音データの長さ
-            print(length)
-            buffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity:UInt32(length))!
-            buffer.frameLength = UInt32(length)
+            soundwave = SoundWave()
+            soundwave.soundHz = currentFrequency
+            soundwave.soundVolume = Float(self.soundVolume)
+            soundwave.soundSet()
             
-            f0 = 528
-            
-            playSound()
-            
+            //初期ページ設定
+            tabChange(tag: 1)
+                    
          }
       
     }
-    
-    func playSound() {
         
-        // オーディオエンジンにプレイヤーをアタッチ
-        audioEngine.attach(player)
-        // プレイヤーノードとミキサーノードを接続
-        audioEngine.connect(player, to: audioEngine.mainMixerNode, format: audioFormat)
-        // 再生の開始を設定
-        player.scheduleBuffer(buffer)
-
-        // エンジンを開始
-        try! audioEngine.start()
-
-        // 音波のセット
-//        self.setSoundWave(type : 1)
-        
-        let queue = OperationQueue()
-        queue.addOperation{ () -> Void in
-
-            while (self.running) {
-
-                // 音波のセット
-                self.setSoundWave(type : 1)
-
-            }
-
-        }
-        
-        // 再生
-        player.play()
-                    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
-    func setSoundWave(type : Int) {
-        
-        let a: Float = 0.1 // 振幅
-
-        if (playFlg)
-        {
-             switch type
-             {
-             
-                 case 1:
-                 // サイン波
-                 for ch in (0..<Int(audioFormat.channelCount)) {
-                     // オーディオのチャンネル数だけ繰り返す 7088
-                     let samples = buffer.floatChannelData![ch]
-                     var c = 0
-                     for n in 0..<Int(buffer.frameLength) {
-                         samples[n] = a * sinf(Float(2.0 * .pi) * f0 * Float(c) /      Float(fs))
-                        
-                         c += 1
-                        
-                         if c >= Int(fs)
-                         {
-                            c = 0
-                         }
-                                             
-                     }
-                 }
-                 break;
-     
-                 case 2:
-             
-                 break;
-     
-                 case 3:
-             
-                 break;
-     
-                 case 4:
-             
-                 break;
-             
-                 default:
-             
-                 break;
-             
-                 
-            }
-        }
-        else
-        {
-            for ch in (0..<Int(audioFormat.channelCount)) {
-                let samples = buffer.floatChannelData![ch]
-                for n in 0..<Int(buffer.frameLength) {
-                    samples[n] = 0
-                }
-            }
-        }
-            
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        //soundwave?.stopEngine() //Viewが消える前にaudioEngineを止める
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-        switch item.tag
-        {
-            case 1:
-
-                let contentVC = storyboard?.instantiateViewController(withIdentifier: "contents1") as! ViewController
-                contentVC.frequencyLabel = self.frequencyLabel
-                self.pageViewController?.setViewControllers([contentVC], direction: .forward, animated: true,completion: nil)
-                break
-           
-            case 2:
-                
-                let contentVC = storyboard?.instantiateViewController(withIdentifier: "contents2") as! ViewController
-                self.pageViewController?.setViewControllers([contentVC], direction: .forward, animated: true,completion: nil)
-                break
-           
-            case 3:
-                
-                let contentVC = storyboard?.instantiateViewController(withIdentifier: "contents3") as! ViewController
-                self.pageViewController?.setViewControllers([contentVC], direction: .forward, animated: true,completion: nil)
-                break
-           
-            case 4:
-                
-                let contentVC = storyboard?.instantiateViewController(withIdentifier: "contents4") as! ViewController
-                self.pageViewController?.setViewControllers([contentVC], direction: .forward, animated: true,completion: nil)
-                break
-           
-            default:
-                break
-           
-        }
+        tabChange(tag: item.tag)
         
     }
+        
+    func tabChange(tag : Int) {
+        
+        let contentVC = storyboard?.instantiateViewController(withIdentifier: "contents" + String(tag)) as! ViewController
+        contentVC.frequencyLabel = self.frequencyLabel
+        contentVC.currentFrequency = self.currentFrequency
+        contentVC.soundwave = self.soundwave
+        self.pageViewController?.setViewControllers([contentVC], direction: .forward, animated: false,completion: nil)
+                
+    }
     
-    @IBAction func HandlePlayback(_ sender: Any) {
+    @IBAction func handlePlayback(_ sender: Any) {
         
         if playFlg == true {
             // 停止
-            player.pause()
-            playFlg = true
+            soundwave.pause()
+            playFlg = false
+            playBackButton.setImage(UIImage(systemName: "play.circle"), for : .normal)
         }
         else
         {
             // 再生
-            player.play()
-            playFlg = false
+            soundwave.reStart()
+            playFlg = true
+            playBackButton.setImage(UIImage(systemName: "pause.circle"), for : .normal)
         }
                 
     }
     
-    @IBAction func handleSlider1_1(_ sender: Any) {
+    @IBAction func handleSlider1_1(_ sender: UISlider) {
+        
+        currentFrequency = Int(slider1_1.value) + Int(slider1_2.value)
+        changeFrequency()
+        
     }
     
-    @IBAction func handleSlider1_2(_ sender: Any) {
+    @IBAction func handleSlider1_2(_ sender: UISlider) {
+          
+        currentFrequency = Int(slider1_1.value) + Int(slider1_2.value)
+        changeFrequency()
+        
     }
     
     @IBAction func handleMinusButton1(_ sender: Any) {
         
-        currentFrequency -= 1
-        self.frequencyLabel.text = String(currentFrequency) + " Hz"
+        if currentFrequency > 0 {
+            currentFrequency -= 1
+            
+            if (slider1_2.value > 0)
+            {
+                slider1_2.value -= 1
+            }
+            else
+            {
+                slider1_1.value -= 1
+            }
+            
+            changeFrequency()
+        }
         
     }
     
     @IBAction func handlePlusButton1(_ sender: Any) {
         
-        currentFrequency += 1
+        if currentFrequency < 4200 {
+            currentFrequency += 1
+            
+            if (slider1_2.value < 200)
+            {
+                slider1_2.value += 1
+            }
+            else
+            {
+                slider1_1.value += 1
+            }
+            
+            changeFrequency()
+        }
+        
+    }
+    
+    func changeFrequency()
+    {
         self.frequencyLabel.text = String(currentFrequency) + " Hz"
-
+        soundwave.soundHz = currentFrequency
+        
+        if (soundwave.isPlay == true)
+        {
+            soundwave.reStart()
+        }
+    }
+    
+    @IBAction func handleFrequeButton1(_ sender: Any) {
+        currentFrequency = frequeList[0]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+    @IBAction func handleFrequeButton2(_ sender: Any) {
+        currentFrequency = frequeList[1]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+    @IBAction func handleFrequeButton3(_ sender: Any) {
+        currentFrequency = frequeList[2]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+    @IBAction func handleFrequeButton4(_ sender: Any) {
+        currentFrequency = frequeList[3]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+    @IBAction func handleFrequeButton5(_ sender: Any) {
+        currentFrequency = frequeList[4]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+    @IBAction func handleFrequeButton6(_ sender: Any) {
+        currentFrequency = frequeList[5]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+    @IBAction func handleFrequeButton7(_ sender: Any) {
+        currentFrequency = frequeList[6]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+    @IBAction func handleFrequeButton8(_ sender: Any) {
+        currentFrequency = frequeList[7]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+    @IBAction func handleFrequeButton9(_ sender: Any) {
+        currentFrequency = frequeList[8]
+        changeFrequency()
+        adjustmentSlideber()
+    }
+        
+    func adjustmentSlideber()
+    {
+        if (currentFrequency < 4000)
+        {
+            slider1_1.value = Float(currentFrequency) - slider1_2.value
+        }
+        else
+        {
+            slider1_1.value = 4000
+            slider1_2.value = Float(currentFrequency) - 4000
+        }
     }
     
 }

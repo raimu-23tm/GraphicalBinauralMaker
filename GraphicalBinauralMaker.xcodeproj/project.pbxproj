@@ -13,6 +13,8 @@
 		184D6DF12403B717004AD0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184D6DEF2403B717004AD0AB /* Main.storyboard */; };
 		184D6DF32403B71C004AD0AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184D6DF22403B71C004AD0AB /* Assets.xcassets */; };
 		184D6DF62403B71C004AD0AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184D6DF42403B71C004AD0AB /* LaunchScreen.storyboard */; };
+		184FA4FE2404EE3000C1883D /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FA4FD2404EE3000C1883D /* MenuController.swift */; };
+		1855544F2407595B003D0F27 /* SoundWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855544E2407595B003D0F27 /* SoundWave.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		184D6DF22403B71C004AD0AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		184D6DF52403B71C004AD0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		184D6DF72403B71C004AD0AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		184FA4FD2404EE3000C1883D /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		1855544E2407595B003D0F27 /* SoundWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundWave.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				184D6DE92403B716004AD0AB /* AppDelegate.swift */,
 				184D6DEB2403B716004AD0AB /* SceneDelegate.swift */,
 				184D6DED2403B716004AD0AB /* ViewController.swift */,
+				184FA4FD2404EE3000C1883D /* MenuController.swift */,
+				1855544E2407595B003D0F27 /* SoundWave.swift */,
 				184D6DEF2403B717004AD0AB /* Main.storyboard */,
 				184D6DF22403B71C004AD0AB /* Assets.xcassets */,
 				184D6DF42403B71C004AD0AB /* LaunchScreen.storyboard */,
@@ -138,6 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1855544F2407595B003D0F27 /* SoundWave.swift in Sources */,
+				184FA4FE2404EE3000C1883D /* MenuController.swift in Sources */,
 				184D6DEE2403B716004AD0AB /* ViewController.swift in Sources */,
 				184D6DEA2403B716004AD0AB /* AppDelegate.swift in Sources */,
 				184D6DEC2403B716004AD0AB /* SceneDelegate.swift in Sources */,
@@ -294,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.raimusoft.raimu.sato.GraphicalBinauralMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.raimusoft.raimu.sato.GraphicalBinauralMaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
