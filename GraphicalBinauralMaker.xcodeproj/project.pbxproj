@@ -7,17 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180EAD04240CF67100710D3A /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EAD03240CF67100710D3A /* Renderer.swift */; };
+		18498FB0240BC275005814CD /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18498FAF240BC275005814CD /* MenuController.swift */; };
 		184D6DEA2403B716004AD0AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D6DE92403B716004AD0AB /* AppDelegate.swift */; };
 		184D6DEC2403B716004AD0AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D6DEB2403B716004AD0AB /* SceneDelegate.swift */; };
 		184D6DEE2403B716004AD0AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D6DED2403B716004AD0AB /* ViewController.swift */; };
 		184D6DF12403B717004AD0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184D6DEF2403B717004AD0AB /* Main.storyboard */; };
 		184D6DF32403B71C004AD0AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184D6DF22403B71C004AD0AB /* Assets.xcassets */; };
 		184D6DF62403B71C004AD0AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184D6DF42403B71C004AD0AB /* LaunchScreen.storyboard */; };
-		184FA4FE2404EE3000C1883D /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184FA4FD2404EE3000C1883D /* MenuController.swift */; };
 		1855544F2407595B003D0F27 /* SoundWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855544E2407595B003D0F27 /* SoundWave.swift */; };
+		18F986AB240CAEE400A9963E /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 18F986AA240CAEE400A9963E /* Shader.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180EAD03240CF67100710D3A /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		18498FAF240BC275005814CD /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		184D6DE62403B716004AD0AB /* GraphicalBinauralMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphicalBinauralMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184D6DE92403B716004AD0AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184D6DEB2403B716004AD0AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,8 +30,8 @@
 		184D6DF22403B71C004AD0AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		184D6DF52403B71C004AD0AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		184D6DF72403B71C004AD0AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		184FA4FD2404EE3000C1883D /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		1855544E2407595B003D0F27 /* SoundWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundWave.swift; sourceTree = "<group>"; };
+		18F986AA240CAEE400A9963E /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +67,14 @@
 				184D6DE92403B716004AD0AB /* AppDelegate.swift */,
 				184D6DEB2403B716004AD0AB /* SceneDelegate.swift */,
 				184D6DED2403B716004AD0AB /* ViewController.swift */,
-				184FA4FD2404EE3000C1883D /* MenuController.swift */,
+				180EAD03240CF67100710D3A /* Renderer.swift */,
+				18498FAF240BC275005814CD /* MenuController.swift */,
 				1855544E2407595B003D0F27 /* SoundWave.swift */,
 				184D6DEF2403B717004AD0AB /* Main.storyboard */,
 				184D6DF22403B71C004AD0AB /* Assets.xcassets */,
 				184D6DF42403B71C004AD0AB /* LaunchScreen.storyboard */,
 				184D6DF72403B71C004AD0AB /* Info.plist */,
+				18F986AA240CAEE400A9963E /* Shader.metal */,
 			);
 			path = GraphicalBinauralMaker;
 			sourceTree = "<group>";
@@ -144,8 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F986AB240CAEE400A9963E /* Shader.metal in Sources */,
+				18498FB0240BC275005814CD /* MenuController.swift in Sources */,
+				180EAD04240CF67100710D3A /* Renderer.swift in Sources */,
 				1855544F2407595B003D0F27 /* SoundWave.swift in Sources */,
-				184FA4FE2404EE3000C1883D /* MenuController.swift in Sources */,
 				184D6DEE2403B716004AD0AB /* ViewController.swift in Sources */,
 				184D6DEA2403B716004AD0AB /* AppDelegate.swift in Sources */,
 				184D6DEC2403B716004AD0AB /* SceneDelegate.swift in Sources */,

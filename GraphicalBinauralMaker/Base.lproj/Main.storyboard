@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Titile-->
+        <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="mainContent" id="BYZ-38-t0r" customClass="ViewController" customModule="GraphicalBinauralMaker" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,10 +21,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWh-xc-t1f">
-                                <rect key="frame" x="0.0" y="136" width="414" height="269"/>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95Z-SO-YEM">
                                 <rect key="frame" x="30" y="415" width="41" height="41"/>
                                 <constraints>
@@ -96,6 +92,9 @@
                                     <tabBarItem tag="4" title="" image="square.grid.2x2" catalog="system" id="Aua-TN-BWF"/>
                                 </items>
                             </tabBar>
+                            <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="2BR-Jz-exY">
+                                <rect key="frame" x="0.0" y="137" width="414" height="273"/>
+                            </mtkView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -103,13 +102,12 @@
                             <constraint firstItem="gtR-mi-fBr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1tX-Bs-Aou"/>
                             <constraint firstItem="hgw-qe-MaB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3sr-6T-gxG"/>
                             <constraint firstItem="OXe-fv-vrs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4vi-Rg-Lgs"/>
-                            <constraint firstItem="95Z-SO-YEM" firstAttribute="top" secondItem="jWh-xc-t1f" secondAttribute="bottom" constant="10" id="5JR-TP-deg"/>
-                            <constraint firstItem="jWh-xc-t1f" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8DF-3f-MnK"/>
                             <constraint firstItem="0l7-Bd-kaA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9H2-Oi-LF5"/>
                             <constraint firstItem="Kie-1K-IvC" firstAttribute="bottom" secondItem="0l7-Bd-kaA" secondAttribute="bottom" id="AMb-OE-rkB"/>
                             <constraint firstItem="Kie-1K-IvC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="466" id="BKW-22-sSO"/>
                             <constraint firstItem="Fzl-ay-Gnv" firstAttribute="leading" secondItem="sO2-60-vsW" secondAttribute="trailing" constant="10" id="F3O-16-vNO"/>
                             <constraint firstItem="95Z-SO-YEM" firstAttribute="centerY" secondItem="sO2-60-vsW" secondAttribute="centerY" id="GBv-1k-C4f"/>
+                            <constraint firstItem="2BR-Jz-exY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HVJ-k8-o7a"/>
                             <constraint firstItem="TTt-Q9-yan" firstAttribute="top" secondItem="OXe-fv-vrs" secondAttribute="top" id="HfS-O9-eTt"/>
                             <constraint firstItem="Kie-1K-IvC" firstAttribute="leading" secondItem="hgw-qe-MaB" secondAttribute="leading" id="NbI-81-N8a"/>
                             <constraint firstItem="Kie-1K-IvC" firstAttribute="top" secondItem="95Z-SO-YEM" secondAttribute="bottom" constant="10" id="OgY-0S-GjO"/>
@@ -124,16 +122,17 @@
                             <constraint firstItem="Fzl-ay-Gnv" firstAttribute="centerY" secondItem="sO2-60-vsW" secondAttribute="centerY" id="ahF-pV-lGd"/>
                             <constraint firstItem="Kie-1K-IvC" firstAttribute="bottom" secondItem="OXe-fv-vrs" secondAttribute="bottom" id="cQd-ey-MRS"/>
                             <constraint firstItem="sO2-60-vsW" firstAttribute="baseline" secondItem="ayL-fR-rc9" secondAttribute="firstBaseline" id="e4I-EU-nnb"/>
-                            <constraint firstItem="Kie-1K-IvC" firstAttribute="leading" secondItem="jWh-xc-t1f" secondAttribute="leading" id="eoA-Em-dA0"/>
-                            <constraint firstItem="jWh-xc-t1f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="haN-d2-sDZ"/>
+                            <constraint firstItem="2BR-Jz-exY" firstAttribute="top" secondItem="gtR-mi-fBr" secondAttribute="bottom" symbolic="YES" id="f5r-OK-0OJ"/>
+                            <constraint firstItem="gtR-mi-fBr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="isO-RZ-den"/>
+                            <constraint firstItem="95Z-SO-YEM" firstAttribute="top" secondItem="2BR-Jz-exY" secondAttribute="bottom" constant="5" id="lAP-GH-5WX"/>
                             <constraint firstItem="0l7-Bd-kaA" firstAttribute="top" secondItem="OXe-fv-vrs" secondAttribute="top" id="mvo-rs-htE"/>
                             <constraint firstItem="sO2-60-vsW" firstAttribute="baseline" secondItem="ayL-fR-rc9" secondAttribute="baseline" id="qAB-aO-lH1"/>
                             <constraint firstItem="sO2-60-vsW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sQV-ht-oWt"/>
                             <constraint firstItem="Kie-1K-IvC" firstAttribute="trailing" secondItem="TTt-Q9-yan" secondAttribute="trailing" id="sfu-W9-bks"/>
                             <constraint firstItem="ayL-fR-rc9" firstAttribute="centerY" secondItem="sO2-60-vsW" secondAttribute="centerY" id="tYk-Tb-8SS"/>
+                            <constraint firstItem="2BR-Jz-exY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uxu-9f-pHc"/>
                             <constraint firstItem="hgw-qe-MaB" firstAttribute="leading" secondItem="OXe-fv-vrs" secondAttribute="leading" id="vNX-gZ-DT6"/>
                             <constraint firstItem="TTt-Q9-yan" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vNf-3a-weC"/>
-                            <constraint firstItem="jWh-xc-t1f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="w3X-mw-nI1"/>
                             <constraint firstItem="hgw-qe-MaB" firstAttribute="top" secondItem="OXe-fv-vrs" secondAttribute="top" id="whp-TS-3ZK"/>
                             <constraint firstItem="Kie-1K-IvC" firstAttribute="trailing" secondItem="gtR-mi-fBr" secondAttribute="trailing" id="xmY-LK-1fD"/>
                             <constraint firstItem="TTt-Q9-yan" firstAttribute="leading" secondItem="OXe-fv-vrs" secondAttribute="leading" id="y0p-7L-q2m"/>
@@ -141,10 +140,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Titile" largeTitleDisplayMode="never" id="vT2-50-iXI">
+                    <navigationItem key="navigationItem" title="Main" largeTitleDisplayMode="never" id="vT2-50-iXI">
+                        <barButtonItem key="backBarButtonItem" title="戻る" id="yJj-G9-MUu"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="line.horizontal.3" catalog="system" id="zOy-Gx-hWS">
                             <connections>
-                                <segue destination="LCB-8U-a8P" kind="show" id="FIm-lV-nui"/>
+                                <segue destination="Lm2-AK-qvM" kind="show" id="6pd-fK-Jtw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -153,7 +153,9 @@
                         <outlet property="binoralLabel" destination="ayL-fR-rc9" id="mNf-Am-WL9"/>
                         <outlet property="contents" destination="Kie-1K-IvC" id="2K1-at-Krn"/>
                         <outlet property="frequencyLabel" destination="sO2-60-vsW" id="NqB-t7-Abv"/>
+                        <outlet property="mainNavigation" destination="vT2-50-iXI" id="Xug-xc-99f"/>
                         <outlet property="maintab" destination="gtR-mi-fBr" id="RbR-8E-VbX"/>
+                        <outlet property="mtkViewDisplay" destination="2BR-Jz-exY" id="O9M-FR-ImR"/>
                         <outlet property="navigation" destination="vT2-50-iXI" id="IXZ-0y-YVx"/>
                         <outlet property="playBackButton" destination="95Z-SO-YEM" id="ZTT-Pe-QM7"/>
                         <outlet property="plusLabel" destination="Fzl-ay-Gnv" id="NDr-7s-MV1"/>
@@ -163,45 +165,113 @@
             </objects>
             <point key="canvasLocation" x="1885.5072463768117" y="93.75"/>
         </scene>
-        <!--Menu Controller-->
-        <scene sceneID="BVh-e5-eWV">
+        <!--設定-->
+        <scene sceneID="6ov-R6-vlx">
             <objects>
-                <viewController id="LCB-8U-a8P" customClass="MenuController" customModule="GraphicalBinauralMaker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VLx-8d-LUZ">
+                <tableViewController id="Lm2-AK-qvM" customClass="MenuController" customModule="GraphicalBinauralMaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="G6u-8V-gT4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zQJ-cS-ade">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="V7x-2f-DqF">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="一般" id="FP5-Oy-Pln">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Old-Qa-7uB">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V7x-2f-DqF" id="ygy-gS-OUQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Old-Qa-7uB" id="XFD-pF-0ca">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL5-zU-cE8">
+                                                    <rect key="frame" x="20" y="11.5" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pke-4a-aLz">
+                                                    <rect key="frame" x="225" y="7" width="171" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="167" id="wcR-ly-VAj"/>
+                                                    </constraints>
+                                                </slider>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pke-4a-aLz" firstAttribute="centerY" secondItem="QL5-zU-cE8" secondAttribute="centerY" id="KM2-eT-L5I"/>
+                                                <constraint firstItem="QL5-zU-cE8" firstAttribute="leading" secondItem="XFD-pF-0ca" secondAttribute="leadingMargin" id="LGg-TK-ZYD"/>
+                                                <constraint firstItem="Pke-4a-aLz" firstAttribute="centerY" secondItem="XFD-pF-0ca" secondAttribute="centerY" id="WWU-8G-9Lu"/>
+                                                <constraint firstAttribute="trailing" secondItem="Pke-4a-aLz" secondAttribute="trailing" constant="20" symbolic="YES" id="rQo-kS-Yp6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="r7c-L2-fCK">
+                                        <rect key="frame" x="0.0" y="99" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r7c-L2-fCK" id="EZo-8e-kTo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="バックグラウンドで実行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4i-Sc-kaf">
+                                                    <rect key="frame" x="20" y="11.5" width="191" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZHg-7g-DND">
+                                                    <rect key="frame" x="345" y="6" width="51" height="32"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Q4i-Sc-kaf" firstAttribute="leading" secondItem="EZo-8e-kTo" secondAttribute="leadingMargin" id="3ii-3a-8GD"/>
+                                                <constraint firstItem="ZHg-7g-DND" firstAttribute="top" secondItem="EZo-8e-kTo" secondAttribute="topMargin" constant="-5" id="Ee4-xJ-bE0"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZHg-7g-DND" secondAttribute="trailing" constant="20" symbolic="YES" id="Mft-v9-r0p"/>
+                                                <constraint firstItem="ZHg-7g-DND" firstAttribute="centerY" secondItem="EZo-8e-kTo" secondAttribute="centerY" id="Wd6-ge-JIF"/>
+                                                <constraint firstItem="ZHg-7g-DND" firstAttribute="centerY" secondItem="Q4i-Sc-kaf" secondAttribute="centerY" id="Z8g-KU-PdZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="このアプリについて" id="7WW-Dt-9On">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mhE-v4-CAC">
+                                        <rect key="frame" x="0.0" y="198.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mhE-v4-CAC" id="2cM-H4-dsu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="アプリを評価" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpT-U5-1qP">
+                                                    <rect key="frame" x="20" y="11" width="104" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="c6U-9N-38n">
+                                        <rect key="frame" x="0.0" y="242" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c6U-9N-38n" id="MbV-ax-2Hs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFj-87-ZrX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="ixt-ie-jMA"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="QDu-Pk-4jK"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="sKN-ru-D2D"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="52D-yl-352" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Lm2-AK-qvM" id="fkG-mE-hJq"/>
+                            <outlet property="delegate" destination="Lm2-AK-qvM" id="gOa-yt-nE5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="設定" id="Kcw-Oj-Vhz"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tG7-Mr-wgr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2944.9275362318845" y="93.75"/>
+            <point key="canvasLocation" x="2844.9275362318845" y="93.75"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="zIO-cq-aZF">
@@ -224,20 +294,20 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mS0-Jw-d3o">
                                         <rect key="frame" x="0.0" y="0.0" width="162" height="22"/>
-                                        <state key="normal" title="XXXXXXX" image="pencil.and.outline" catalog="system">
+                                        <state key="normal" title="　XXXXXXX" image="pencil.and.outline" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleFrequeButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="1Xl-UP-p4s"/>
+                                            <action selector="handleSampleButton1:" destination="vi8-Yb-KPm" eventType="touchUpInside" id="58h-Dp-T1W"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rxr-5U-Z4W">
                                         <rect key="frame" x="192" y="0.0" width="162" height="22"/>
-                                        <state key="normal" title="XXXXXXX" image="pencil.and.outline" catalog="system">
+                                        <state key="normal" title="　XXXXXXX" image="pencil.and.outline" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleFrequeButton2:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="S7G-T0-gE5"/>
+                                            <action selector="handleSampleButton2:" destination="vi8-Yb-KPm" eventType="touchUpInside" id="4lk-rv-dz4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -247,20 +317,20 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LG1-qw-Brq">
                                         <rect key="frame" x="0.0" y="0.0" width="162" height="22"/>
-                                        <state key="normal" title="XXXXXXX" image="pencil.and.outline" catalog="system">
+                                        <state key="normal" title="　XXXXXXX" image="pencil.and.outline" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleFrequeButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="XLk-bG-1Lf"/>
+                                            <action selector="handleSampleButton3:" destination="vi8-Yb-KPm" eventType="touchUpInside" id="l4V-WN-Ioc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3g-3c-kmR">
                                         <rect key="frame" x="192" y="0.0" width="162" height="22"/>
-                                        <state key="normal" title="XXXXXXX" image="pencil.and.outline" catalog="system">
+                                        <state key="normal" title="　XXXXXXX" image="pencil.and.outline" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleFrequeButton2:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="svW-6D-NHG"/>
+                                            <action selector="handleSampleButton4:" destination="vi8-Yb-KPm" eventType="touchUpInside" id="IEA-3J-tnB"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -270,20 +340,20 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ii5-Ow-3Qj">
                                         <rect key="frame" x="0.0" y="0.0" width="162" height="22"/>
-                                        <state key="normal" title="XXXXXXX" image="pencil.and.outline" catalog="system">
+                                        <state key="normal" title="　XXXXXXX" image="pencil.and.outline" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleFrequeButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="5u7-ve-I9P"/>
+                                            <action selector="handleSampleButton5:" destination="vi8-Yb-KPm" eventType="touchUpInside" id="3mq-0Q-CaV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edl-CY-xir">
                                         <rect key="frame" x="192" y="0.0" width="162" height="22"/>
-                                        <state key="normal" title="XXXXXXX" image="pencil.and.outline" catalog="system">
+                                        <state key="normal" title="　XXXXXXX" image="pencil.and.outline" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleFrequeButton2:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="eSQ-6z-IPk"/>
+                                            <action selector="handleSampleButton6:" destination="vi8-Yb-KPm" eventType="touchUpInside" id="30Z-Bi-Zdq"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -293,20 +363,20 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyY-7g-KWt">
                                         <rect key="frame" x="0.0" y="0.0" width="162" height="22"/>
-                                        <state key="normal" title="XXXXXXX" image="pencil.and.outline" catalog="system">
+                                        <state key="normal" title="　XXXXXXX" image="pencil.and.outline" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleFrequeButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="gR6-Uj-iwA"/>
+                                            <action selector="handleSampleButton7:" destination="vi8-Yb-KPm" eventType="touchUpInside" id="LDa-mc-6vt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhA-Yu-adc">
                                         <rect key="frame" x="192" y="0.0" width="162" height="22"/>
-                                        <state key="normal" title="XXXXXXX" image="pencil.and.outline" catalog="system">
+                                        <state key="normal" title="　XXXXXXX" image="pencil.and.outline" catalog="system">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleFrequeButton2:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="x2u-hu-2uA"/>
+                                            <action selector="handleSampleButton8:" destination="vi8-Yb-KPm" eventType="touchUpInside" id="6V1-cY-6V8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -346,19 +416,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="306"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hID-EE-cPG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hID-EE-cPG">
                                 <rect key="frame" x="20" y="20" width="122" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="　サイン波" image="largecircle.fill.circle" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cag-e0-Bkt">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRs-68-z8S">
+                                <rect key="frame" x="20" y="20" width="122" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="　サイン波" image="circle" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handleSinTypeButton:" destination="aN6-oH-FyG" eventType="touchUpInside" id="42q-ed-DFg"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cag-e0-Bkt">
                                 <rect key="frame" x="20" y="74" width="102" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="　三角波" image="largecircle.fill.circle" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EpL-3d-s6W">
+                                <rect key="frame" x="20" y="74" width="102" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="　三角波" image="circle" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleTriangleTypeButton:" destination="aN6-oH-FyG" eventType="touchUpInside" id="Hi2-Zs-MUC"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoA-Qn-DtC">
                                 <rect key="frame" x="142" y="86" width="0.0" height="0.0"/>
@@ -366,19 +458,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xzf-rv-503">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xzf-rv-503">
                                 <rect key="frame" x="20" y="128" width="102" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="　短形波" image="largecircle.fill.circle" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9A-sZ-vqP">
+                                <rect key="frame" x="20" y="128" width="102" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="　短形波" image="circle" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleSquareTypeButton:" destination="aN6-oH-FyG" eventType="touchUpInside" id="UGI-6V-stQ"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdK-EC-cPR">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdK-EC-cPR">
                                 <rect key="frame" x="20" y="182" width="143" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="　ノコギリ波" image="largecircle.fill.circle" catalog="system">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTp-p2-7zq">
+                                <rect key="frame" x="20" y="182" width="143" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="　ノコギリ波" image="circle" catalog="system">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleSawtoothTypeButton:" destination="aN6-oH-FyG" eventType="touchUpInside" id="dtp-lI-MWI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -396,6 +510,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pnh-vV-iBM"/>
                     </view>
+                    <connections>
+                        <outlet property="typeSawtoothOff" destination="PTp-p2-7zq" id="4gM-a8-fnA"/>
+                        <outlet property="typeSawtoothOn" destination="HdK-EC-cPR" id="ef8-1h-BSD"/>
+                        <outlet property="typeSinOff" destination="pRs-68-z8S" id="9if-WV-Bj2"/>
+                        <outlet property="typeSinOn" destination="hID-EE-cPG" id="ijM-YS-YJf"/>
+                        <outlet property="typeSquareOff" destination="V9A-sZ-vqP" id="Kya-yr-d9k"/>
+                        <outlet property="typeSquareOn" destination="Xzf-rv-503" id="AkI-Ms-hTf"/>
+                        <outlet property="typeTriangleOff" destination="EpL-3d-s6W" id="5DJ-bW-pTC"/>
+                        <outlet property="typeTriangleOn" destination="Cag-e0-Bkt" id="CF2-uh-wST"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bin-uv-8Xg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -412,13 +536,14 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="36" translatesAutoresizingMaskIntoConstraints="NO" id="sPN-fK-egG">
                                 <rect key="frame" x="66.5" y="15" width="281" height="31"/>
                                 <connections>
-                                    <action selector="handleSlider1_2:" destination="CoM-Q4-4Wv" eventType="valueChanged" id="8qB-EW-uZk"/>
+                                    <action selector="handleSlider2:" destination="3Hi-7n-01p" eventType="valueChanged" id="RG3-ec-37O"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Je-Qj-ND6">
                                 <rect key="frame" x="28.5" y="19" width="20" height="22"/>
                                 <state key="normal" image="minus.circle" catalog="system"/>
                                 <connections>
+                                    <action selector="handeMinusButton2:" destination="3Hi-7n-01p" eventType="touchUpInside" id="575-Jk-GAS"/>
                                     <action selector="handleMinusButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="cwa-uZ-u5T"/>
                                 </connections>
                             </button>
@@ -427,6 +552,7 @@
                                 <state key="normal" image="chevron.compact.left" catalog="system"/>
                                 <connections>
                                     <action selector="handleMinusButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="FMH-KI-qBZ"/>
+                                    <action selector="handleMinusButton2Mini:" destination="3Hi-7n-01p" eventType="touchUpInside" id="kTp-SO-N5t"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1G-p2-caj">
@@ -434,6 +560,7 @@
                                 <state key="normal" image="chevron.compact.right" catalog="system"/>
                                 <connections>
                                     <action selector="handleMinusButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="jqN-t5-uAf"/>
+                                    <action selector="handlePlusButon2Mini:" destination="3Hi-7n-01p" eventType="touchUpInside" id="ack-WT-kjT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isM-Ao-46n">
@@ -443,6 +570,7 @@
                                 </state>
                                 <connections>
                                     <action selector="handlePlusButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="OFR-Dm-azt"/>
+                                    <action selector="handlePlusButton2:" destination="3Hi-7n-01p" eventType="touchUpInside" id="0lx-RQ-eea"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Lv-zg-4V1">
@@ -450,8 +578,9 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUV-BF-UMg">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
-                                        <state key="normal" title="δ wave (1〜3 Hz)"/>
+                                        <state key="normal" title="δ wave (0.5〜3 Hz)"/>
                                         <connections>
+                                            <action selector="handleBinoralButton1:" destination="3Hi-7n-01p" eventType="touchUpInside" id="9yW-29-kqU"/>
                                             <action selector="handleFrequeButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="rvG-Ag-6bz"/>
                                         </connections>
                                     </button>
@@ -459,6 +588,7 @@
                                         <rect key="frame" x="207" y="0.0" width="187" height="30"/>
                                         <state key="normal" title="θ wave (4〜7 Hz)"/>
                                         <connections>
+                                            <action selector="handleBinoralButton2:" destination="3Hi-7n-01p" eventType="touchUpInside" id="bFH-LK-u3P"/>
                                             <action selector="handleFrequeButton2:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="Lfi-RA-lja"/>
                                         </connections>
                                     </button>
@@ -471,6 +601,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
                                         <state key="normal" title="α wave (8〜13 Hz)"/>
                                         <connections>
+                                            <action selector="handleBinoralButton3:" destination="3Hi-7n-01p" eventType="touchUpInside" id="cpg-ce-kZX"/>
                                             <action selector="handleFrequeButton1:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="eMm-Xs-GhG"/>
                                         </connections>
                                     </button>
@@ -478,21 +609,37 @@
                                         <rect key="frame" x="207" y="0.0" width="187" height="30"/>
                                         <state key="normal" title="β wave (14〜33 Hz)"/>
                                         <connections>
+                                            <action selector="handleBinoralButton4:" destination="3Hi-7n-01p" eventType="touchUpInside" id="gO4-rD-dSl"/>
                                             <action selector="handleFrequeButton2:" destination="CoM-Q4-4Wv" eventType="touchUpInside" id="e4m-Qz-Ths"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prK-if-1sW">
-                                <rect key="frame" x="10" y="170" width="19.5" height="24"/>
-                                <state key="normal" image="checkmark.square" catalog="system"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prK-if-1sW" userLabel="Power Mode">
+                                <rect key="frame" x="10" y="170" width="180" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="kz6-OS-soW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="　Power Mode" image="checkmark.square" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handlePowerModeOn:" destination="3Hi-7n-01p" eventType="touchUpInside" id="DgQ-nT-8mP"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sx-Gr-Xky">
-                                <rect key="frame" x="10" y="170" width="149.5" height="24"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sx-Gr-Xky">
+                                <rect key="frame" x="10" y="170" width="180" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="9z5-pM-h5D"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="　Power Mode" image="square" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="handlePowerModeOff:" destination="3Hi-7n-01p" eventType="touchUpInside" id="jg9-EH-BUZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -527,10 +674,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ub-eW-pEE"/>
                     </view>
+                    <connections>
+                        <outlet property="powerModeOff" destination="5Sx-Gr-Xky" id="s8h-5g-hLa"/>
+                        <outlet property="powerModeOn" destination="prK-if-1sW" id="JSG-kU-3j0"/>
+                        <outlet property="slider2" destination="sPN-fK-egG" id="8qB-qj-n99"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dv3-vf-WW9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1608.6956521739132" y="691.40625"/>
+            <point key="canvasLocation" x="1608.6956521739132" y="691.07142857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BCT-mD-16g">

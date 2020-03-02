@@ -4,7 +4,7 @@ import Foundation
 import Metal
 import MetalKit
 
-class ViewController: UIViewController, UITabBarDelegate, MTKViewDelegate {
+class ViewController: UIViewController, UITabBarDelegate {
     
     //ソルフェジオ周波数リスト
     let frequeList =
@@ -58,24 +58,11 @@ class ViewController: UIViewController, UITabBarDelegate, MTKViewDelegate {
     var soundwave: SoundWave!
     
     //Metal描画関連
+    private var renderer: Renderer!
     private let device = MTLCreateSystemDefaultDevice()!
-    private var commandQueue: MTLCommandQueue!
-    private let vertexData: [Float] = [
-        -1, -1, 0, 1,
-         1, -1, 0, 1,
-         -1, 1, 0, 1,
-         1,  1, 0, 1
-    ]
-    private var vertexBuffer: MTLBuffer!
-    private var resolutionBuffer: MTLBuffer! = nil
-    private var timeBuffer: MTLBuffer! = nil
-    private var renderPipeline: MTLRenderPipelineState!
-    private let renderPassDescriptor = MTLRenderPassDescriptor()
-    private var indices: [UInt16]!
-    private var vertices: [Vertex]!
-    private var indexBuffer: MTLBuffer!
-    @IBOutlet weak var mtkView: MTKView!
-        
+    
+    @IBOutlet var mtkViewDisplay: MTKView!
+    
     //初期処理
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,11 +103,27 @@ class ViewController: UIViewController, UITabBarDelegate, MTKViewDelegate {
             soundwave.soundSet()
             
             // Metalのセットアップ
-            setupMetal()
-            makeBuffers()
-            makePipeline()
-            mtkView.enableSetNeedsDisplay = true
-            mtkView.setNeedsDisplay() // ビューの更新依頼 → draw(in:)が呼ばれる
+            guard let mtlDevice = MTLCreateSystemDefaultDevice() else {
+                print("Metal is not supported on this device")
+                return
+            }
+            let mtkView = MTKView(frame: view.frame, device: mtlDevice)
+            mtkView.device = mtlDevice
+            mtkView.framebufferOnly = true
+            mtkView.preferredFramesPerSecond = 60
+            
+            //mtkViewを画面に配置
+            mtkView.frame = CGRect(x: 0, y: 0, width:  mtkViewDisplay.frame.size.width, height: mtkViewDisplay.frame.size.height)
+                mtkViewDisplay.addSubview(mtkView)
+            
+            //rendererの設定
+            renderer = Renderer(metalKitView: mtkView)
+            renderer.setVertices([float3(-1.0,-1.0,0.0),
+                                  float3(1.0,-1.0,0.0),
+                                  float3(-1.0,1.0,0.0),
+                                  float3(1.0,1.0,0.0)])
+            renderer.setIndices([0,1,2,1,2,3])
+            renderer.start()
             
             //初期ページ設定
             tabChange(tag: 1)
@@ -209,6 +212,10 @@ class ViewController: UIViewController, UITabBarDelegate, MTKViewDelegate {
         }
         
     }
+    
+    //===============================================
+    // ■　単一周波数設定
+    //===============================================
     
     @IBAction func handleSlider1_1(_ sender: UISlider) {
         
@@ -332,6 +339,10 @@ class ViewController: UIViewController, UITabBarDelegate, MTKViewDelegate {
         }
     }
     
+    //===============================================
+    // ■　バイノーラル音
+    //===============================================
+    
     @IBAction func handleSlider2(_ sender: UISlider) {
                 
         currentBinoralFrequency = slider2.value
@@ -430,6 +441,11 @@ class ViewController: UIViewController, UITabBarDelegate, MTKViewDelegate {
         
     }
     
+    
+    //===============================================
+    // ■　波形
+    //===============================================
+    
     @IBAction func handleSinTypeButton(_ sender: Any) {
         currentSoundType = 0
         soundwave.soundType = currentSoundType
@@ -469,6 +485,10 @@ class ViewController: UIViewController, UITabBarDelegate, MTKViewDelegate {
         typeSquareOn.isHidden = true
         typeSawtoothOn.isHidden = false
     }
+    
+    //===============================================
+    // ■　サンプル
+    //===============================================
     
     @IBAction func handleSampleButton1(_ sender: Any) {
         currentFrequency = sampleFrequeList[0]
@@ -528,112 +548,5 @@ class ViewController: UIViewController, UITabBarDelegate, MTKViewDelegate {
         }
     }
     
-    private func setupMetal() {
-         // MTLCommandQueueを初期化
-         commandQueue = device.makeCommandQueue()
-         
-         // MTKViewのセットアップ
-         mtkView.device = device
-         mtkView.delegate = self
-
-//        vertices = [Vertex]()
-//         indices = [UInt16]()
-     }
-
-     private func makeBuffers() {
-        
-         let size = vertexData.count * MemoryLayout<Float>.size
-         
-        vertexBuffer = device.makeBuffer(bytes: vertexData, length: size)
-        
-        //vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count*MemoryLayout<Vertex>.stride, options: [])
-        
-         let screenSize = UIScreen.main.nativeBounds.size
-         let resolutionData = [Float(screenSize.width), Float(screenSize.height)]
-         let resolutionSize = resolutionData.count * MemoryLayout<Float>.size
-         resolutionBuffer = device.makeBuffer(bytes: resolutionData, length: resolutionSize, options: [])
-        
-         timeBuffer = device.makeBuffer(length: MemoryLayout<Float>.size, options: [])
-         timeBuffer.label = "time"
-        
-         //indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: [])
-        
-     }
-     
-     private func makePipeline() {
-         guard let library = device.makeDefaultLibrary() else {fatalError()}
-         //レンダリングパイプラインでシェーダ関数を使う
-         let descriptor = MTLRenderPipelineDescriptor()
-         descriptor.vertexFunction = library.makeFunction(name: "vertexShader")
-         descriptor.fragmentFunction = library.makeFunction(name: "fragmentShader")
-         //ピクセルフォーマットを指定
-         descriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
-        
-        //レンダリングパイプライン作成
-         renderPipeline = try! device.makeRenderPipelineState(descriptor: descriptor)
-     }
-     
-     // MARK: - MTKViewDelegate
-     
-     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-         print("\(self.classForCoder)/" + #function)
-     }
-     
-     func draw(in view: MTKView) {
-        
-         // ドローアブルを取得
-         guard let drawable = view.currentDrawable else {return}
-
-         // コマンドバッファを作成
-         guard let commandBuffer = commandQueue.makeCommandBuffer() else {fatalError()}
-
-         // ドローアプルを描画テクスチャに設定
-         renderPassDescriptor.colorAttachments[0].texture = drawable.texture
-         
-         // エンコーダ生成
-         let renderEncoder =
-             commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)!
-
-         // エンコーダにパイプラインを設定
-         guard let renderPipeline = renderPipeline else {fatalError()}
-         renderEncoder.setRenderPipelineState(renderPipeline)
-        
-         // vertexBufferの引数を設定
-         renderEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        
-        //「プリミティブ」(点・直線・三角形といった、頂点からなる基本的な図形)
-        //の描画を行うためのメソッドを呼ぶ
-        //ここではdrawPrimitivesを使用。
-        //4 つの頂点を(2つの三角形からなる) 矩形として描画するように、triangleStripを指定
-         renderEncoder.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
-         //renderEncoder.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
-        
-        //renderEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0)
-             
-        // flagmentBufferに座標データを設定
-        renderEncoder.setFragmentBuffer(resolutionBuffer, offset: 0, index: 0)
-
-        // flagmentBufferにTimeデータを設定
-        renderEncoder.setFragmentBuffer(timeBuffer, offset: 0, index: 1)
-//        let pTimeData = timeBuffer.contents() ※動かす場合必要
-//        let vTimeData = pTimeData.bindMemory(to: Float.self, capacity: 1 / MemoryLayout<Float>.stride)
-//        vTimeData[0] = Float(Date().timeIntervalSince(startDate))
-
-         // エンコード完了
-         renderEncoder.endEncoding()
-
-         // 表示するドローアブルを登録
-         commandBuffer.present(drawable)
-         
-         // コマンドバッファをコミット（エンキュー）
-         commandBuffer.commit()
-         
-         // 完了まで待つ
-         commandBuffer.waitUntilCompleted()
-     }
-    
 }
 
-struct Vertex {
-    var position: float3
-}
